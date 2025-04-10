@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="description" content="25年国考申论预测卷" />
+  <title>25年国考申论预测卷</title>
+  <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <meta name="referrer" content="no-referrer" />
+  <meta HTTP-EQUIV="Cache-Control" CONTENT="no-store,no-cache, must-revalidate">
+  <meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+  <meta HTTP-EQUIV="expires" CONTENT="0">
+  <script type="text/javascript" src="https://img.yaotia.com/L_JS/1009/rem440.js"></script>
+  <link rel="stylesheet" href="https://img.yaotia.com/css/L_vant_v_2_11/index.css">
+  <link rel="stylesheet" href="https://img.yaotia.com/L_CSS_440/241010/common.min.css">
+  <link rel="stylesheet" href="https://img.yaotia.com/css/L_0113/animate.min.css">
+  <style>
+    body {
+        background-color: #fff;
+    }
+    .page-container {
+        padding-bottom: 0;
+        padding-top: 88px;
+        max-width: 768px;
+        min-height: 100vh;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    .d-block {
+        display: block;
+    }
+    .header {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+        max-width: 768px;
+        /* height: 88px; */
+        padding-top: 50px;
+        padding-bottom: 10px;
+        background-color: #fff;
+        box-sizing: border-box;
+        z-index: 2000;
+        transition: all .5s;
+    }
+    .back-iocn {
+        position: absolute;
+        top: 50%;
+        left: .2rem;
+        transform: translateY(-50%);
+        width: .26rem;
+    }
+  </style>
+  <script>
+    document.hideNav = 1
+  </script>
+</head>
+
+<body class="root">
+    <div class="page-container" id="app" v-cloak>
+        <div class="header animate__animated animate__fadeIn" >
+            <div class="t-c  po-r">
+                <img src="./img/icon-back.png" alt="" class="back-iocn" @click="finish">
+                <span class="f-s-16 f-w-b">25年国考申论预测卷</span>
+            </div>
+        </div>
+        <div class="po-r" style="margin-top: 15vh;">
+            <div style="width: 1.2rem;margin: 0 auto;">
+                <div class="t-c po-r cover" style="width: 1.3rem;height: 1.5rem; border-radius: .1rem;background-color: #f8f7f7;overflow: hidden;">
+                    <van-image src="https://img.yaotia.com/act/pdf/20241018/1111.jpg" show-loading style="height: 1.5rem;max-width: 100%;">
+                        <template v-slot:loading>
+                            <van-loading type="spinner" size="20"></van-loading>
+                        </template>
+                    </van-image>
+                    <div class="mask po-a" style="top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.10);"></div>
+                </div>
+                <p class="t-c mt-10 f-s-14 " style="font-weight: bold;line-height: .18rem;width: max-content;" :style="{ color: '#333' }">25年国考申论预测卷</p>
+            </div>
+            <div style="width: 2.5rem;margin: .5rem auto 0;">
+                <van-button color="rgb(255, 51, 51)" block round style="height: .4rem;font-weight: bold;" @click="previwPdf">点击领取</van-button>
+            </div>
+            <p class="f-s-12 " style="width: 100vw;margin-top: 20px;text-align: center;">无法领取，可添加仓仓学姐微信领取：buzhiawu666</p>
+        </div>
+    </div>
+    <script src="https://img.yaotia.com/js/jquery.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/vue.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/L_vant_v_2_11/vatn.min.js"></script>
+    <!-- <script src="https://img.yaotia.com/L_JS/vconsole.min.js"></script> -->
+
+    <script>
+        // var vConsole = new VConsole();
+        var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    isTop: false,
+                    isHidden: false,
+                    hidden: false,
+                    timer: null,
+                    pageLoad: false,
+                    pdf: 'https://img.yaotia.com/ac/2024/10-18/jzkfile/nTYQJDfQijHfyYXG_0.pdf',
+                    name: '25年国考申论预测卷'
+                }
+            },
+
+            created() {
+                
+            },
+            mounted() {
+                document.addEventListener('visibilitychange', this.visibilitychangeFn)
+                window.addEventListener('scroll', this.handleScroll)
+            },
+            methods: {
+                finish() {
+                    window.buzhi && window.buzhi.finish()
+                    window.finish && window.finish(1)
+                },
+                previwPdf() {
+                    clearTimeout(this.timer)
+                    this.timer = setTimeout(() => {
+                        clearTimeout(this.timer)
+                        if(!this.hidden) {
+                            this.$dialog.alert({
+                                title: '提示',
+                                message: '若您点击无法查看资料\n请将APP升级到最新版本再试试~',
+                            })
+                        }
+                    }, 1250)
+                    let url = `sadepot://sac.com/module/pdf/preview?pdfName=${this.name}&fileURL=${this.pdf}&isHideBottomBar=1`
+                    window.location.href = url
+                },
+                visibilitychangeFn() {
+                    this.isHidden = document.hidden;
+                    if (this.isHidden) {
+                        console.log('隐藏了');
+                        this.hidden = true
+                    } else {
+                        console.log('显示了了');
+                        // this.hidden = false
+                    }
+                },
+                handleScroll(){
+                    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+                    scrollTop > 200 ? this.isTop = true : this.isTop = false
+                },
+            }
+        })
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+    </script>
+</body>
+
+</html>

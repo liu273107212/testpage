@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="description" content="上岸仓app" />
+  <title>上岸仓app</title>
+  <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <meta name="referrer" content="no-referrer" />
+  <meta HTTP-EQUIV="Cache-Control" CONTENT="no-store,no-cache, must-revalidate">
+  <meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+  <meta HTTP-EQUIV="expires" CONTENT="0">
+  <script type="text/javascript" src="https://img.yaotia.com/L_JS/1018/L_rem.js"></script>
+  <link rel="stylesheet" href="https://img.yaotia.com/css/L_vant_v_2_11/index.css">
+  <link rel="stylesheet" href="https://img.yaotia.com/L_CSS/21_09_15_01/common.min.css">
+  <style>
+
+    .page-container {
+        width: 100%;
+        max-width: 540px;
+        margin: 0 auto;
+        height: 100vh;
+        padding-bottom: 0;
+        box-sizing: border-box;
+        background-color: #FF3333;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .van-loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .top {
+        padding: 12px 15px;
+        background-color: #fff;
+    }
+    .top-btn {
+        width: 80px;
+        height: 32px;
+        background-color: #FF3333;
+        color: #fff;
+        text-align: center;
+        line-height: 32px;
+        font-size: 13px;
+        border-radius: 999px;
+    }
+    .my-swipe {
+        max-height: calc( 100vh - 64px );
+    }
+    .fix-area {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-width: 540px;
+        background: linear-gradient( 180deg, rgba(255,51,51,0) 0%, #FF3333 100%);
+    }
+    .fix-inner {
+        padding-top: 1.5rem;
+        padding-bottom: .4rem;
+        width: 100%;
+        text-align: center;
+    }
+    .fix-inner .btn {
+        display: inline-block;
+        width: 3.1rem;
+        height: .48rem;
+        line-height: .48rem;
+        text-align: center;
+        color: #FF3333;
+        font-size: .16rem;
+        font-weight: bold;
+        background-color: #fff;
+        border-radius: 999px;
+    }
+    .fix-inner .btn:active {
+        opacity: .9;
+    }
+    .dots {
+        margin-top: .12rem;
+    }
+    .dot {
+        width: .12rem;
+        height: .02rem;
+        margin: 0 .05rem;
+        background-color: rgba(255, 255, 255, .5);
+        transition: all .3s;
+    }
+    .dot-active {
+        background-color: #fff;
+    }
+    .ani-scal {animation: aniscale .5s infinite alternate;}
+    @keyframes aniscale {
+        0% {
+            transform: scale(.99);
+        }
+        100% {
+            transform: scale(1.02);
+        }
+    }
+  </style>
+</head>
+
+<body class="root">
+    <div class="page-container" id="app" v-cloak>
+        <div class="c-flex flex-j-b flex-a-c top">
+            <img src="./img/top-img.png" alt="" style="width: 215px;">
+            <span class="top-btn" @click="goApp">下载app</span>
+        </div>
+        <van-swipe class="my-swipe" :autoplay="1500" :show-indicators="false" @change="onChange">
+            <van-swipe-item v-for="item, index in imgs" :key="index">
+                <img :src="item" alt="">
+            </van-swipe-item>
+        </van-swipe>
+        <div class="fix-area ">
+            <div class="fix-inner">
+                <span class="btn ani-scal" @click="goApp">立即下载app</span>
+                <div class="dots c-flex flex-j-c">
+                    <span v-for="item, index in imgs" :key="index" class="dot" :class="{ 'dot-active': current == index }"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://img.yaotia.com/js/jquery.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/vue.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/L_vant_v_2_11/vatn.min.js"></script>
+
+
+    <script>
+        var u = navigator.userAgent;
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
+        var app = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    imgs: [
+                        './img/s-1.png',
+                        './img/s-2.png',
+                        './img/s-3.png',
+                    ],
+                    current: 0,
+                }
+            },
+            mounted: function () {
+
+            },
+            methods: {
+                goApp() {
+                    if (isiOS) {
+                        window.location = "https://apps.apple.com/us/app/%E4%B8%8A%E5%B2%B8%E4%BB%93/id6502400513"
+                    } else {
+                        window.location = "https://a.app.qq.com/o/simple.jsp?pkgname=com.midas.sac&ckey=CK1361995967837" //如果超时就跳转到app下载页
+                    }
+                },
+                onChange(index) {
+                    this.current = index;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

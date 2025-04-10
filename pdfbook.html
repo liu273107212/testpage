@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="description" content="上岸仓公考资料馆" />
+  <title>上岸仓公考资料馆</title>
+  <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <meta name="referrer" content="no-referrer" />
+  <meta HTTP-EQUIV="Cache-Control" CONTENT="no-store,no-cache, must-revalidate">
+  <meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+  <meta HTTP-EQUIV="expires" CONTENT="0">
+  <script type="text/javascript" src="https://img.yaotia.com/L_JS/1009/rem440.js"></script>
+  <link rel="stylesheet" href="https://img.yaotia.com/css/L_vant_v_2_11/index.css">
+  <link rel="stylesheet" href="https://img.yaotia.com/L_CSS_440/241010/common.min.css">
+  <link rel="stylesheet" href="https://img.yaotia.com/css/L_0113/animate.min.css">
+  <style>
+    body {
+        background-color: #fff;
+    }
+    .page-container {
+        padding-bottom: 0;
+        max-width: 768px;
+        min-height: 100vh;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    .d-block {
+        display: block;
+    }
+    .header {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+        max-width: 768px;
+        /* height: 88px; */
+        padding-top: 50px;
+        background-color: #fff;
+        box-sizing: border-box;
+        z-index: 2000;
+        transition: all .5s;
+    }
+    .back-iocn {
+        position: absolute;
+        top: 50%;
+        left: .1rem;
+        transform: translateY(-50%);
+        width: .26rem;
+    }
+    .search-input {
+        display: flex;
+        padding: 0 0 0 .4rem;
+        margin: 0 .2rem;
+        font-weight: bold;
+        color: #000;
+        background-color: #fff;
+        border: 1.5px solid #000;
+        border-radius: 999px;
+    }
+    .search-input::before {
+        position: absolute;
+        content: '';
+        left: .18rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: .16rem;
+        height: .16rem;
+        background: url('./img/icon-search.png') no-repeat;
+        background-size: 100% 100%;
+    }
+    .m-input {
+        padding: 10px 16px 10px 5px;
+        width: 90%;
+        font-size: .14rem;
+        line-height: 20px;
+        font-weight: normal;
+    }
+    .m-input input::placeholder {
+        color: #333;
+    }
+    .tag::before {
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 53%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 75%;
+        background-color: #124DEC;
+    }
+    .cover {
+        transition: all .3s;
+    }
+    .cover:active {
+        transform: scale(.98);
+    }
+    .cover img {
+        margin: 0 auto;
+    }
+    .text2-three-dots {
+        word-break: break-all;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+    }
+  </style>
+  <script>
+    document.hideNav = 1
+  </script>
+</head>
+
+<body class="root">
+    <div class="page-container" id="app" v-cloak>
+        <div class="header  animate__animated animate__fadeIn" v-if="isTop">
+            <div class="c-flex flex-j-b flex-a-c">
+                <div class="t-c po-r ml-10" style="width: .26rem;height: .24rem;">
+                    <img src="./img/icon-back.png" alt="" @click="finish">
+                </div>
+                <div class="search-input po-r b-s-b animate__animated animate__fadeIn" style="margin-top: 0;flex: 1;" >
+                    <van-field v-model="kw" ref="input" placeholder="搜索一下快速查找资料" class="m-input"  @input="input"></van-field>
+                </div>
+            </div>
+            <div class="c-flex flex-j-b f-s-18 f-w-b"
+                style="background-color: #fff;border-radius: .1rem .1rem 0 0;padding: .18rem .15rem;color: #333;border-bottom: 1px solid #F2F2F2;"
+            >
+                <p>{{ group ? group+'-'+cate : '全部资料' }}</p>
+                <div style="font-size: .13rem;color: #333;font-weight: normal;" class="c-flex flex-a-c" @click="show = true">
+                    <span class="mr-5">筛选</span>
+                    <img src="https://img.yaotia.com/act/book/20250406/ico-arrow.png" alt="" style="width: .06rem;height: .06rem;">
+                </div>
+            </div>
+        </div>
+        <div class="po-r">
+            <van-image class="fill-w" src="https://img.yaotia.com/act/book/20250406/book-bg.png" show-loading style="height: 2.8rem;">
+                <template v-slot:loading>
+                    <van-loading type="spinner" size="20"></van-loading>
+                </template>
+            </van-image>
+            <div class="" style="position: fixed;left: .1rem;top: 50px;width: .26rem;height: .24rem;">
+                <img src="./img/icon-back.png" alt=""  @click="finish">
+            </div>
+        </div>
+        <div style="margin-top: -100px;" class="po-r">
+            <div class="search-input po-r b-s-b animate__animated animate__fadeIn">
+                <van-field v-model="kw" ref="input1" placeholder="搜索一下快速查找资料" class="m-input" id="search-input1" @input="input"></van-field>
+            </div>
+            <div class="mt-25">
+                <div class="c-flex flex-j-b f-s-18 f-w-b mb-20"
+                    style="background-color: #fff;border-radius: .15rem .15rem 0 0;padding: .18rem .15rem;color: #333;border-bottom: 1px solid #F2F2F2;"
+                >
+                    <p>{{ group ? group+'-'+cate : '全部资料' }}</p>
+                    <div style="font-size: .13rem;color: #333;font-weight: normal;" class="c-flex flex-a-c" @click="show = true">
+                        <span class="mr-5">筛选</span>
+                        <img src="https://img.yaotia.com/act/book/20250406/ico-arrow.png" alt="" style="width: .06rem;height: .06rem;">
+                    </div>
+                </div>
+                <div v-for="item, index in groups" :key="index">
+                    <p>
+                        <span class="f-s-16 f-w-b po-r pl-15" style="display: inline-block;color: #222;">{{ item.name }}</span>
+                        <span class="ml-10" style="font-size: .13rem;color: #666;">共{{ item.num }}个资料</span>
+                    </p>
+                    <div class="c-flex mt-20" style="flex-wrap: wrap;">
+                        <div v-for="item1, index1 in item.books" :key="index1" 
+                        style="margin-bottom: .22rem;margin-left: .14rem;width: 1.06rem;border: 1px solid #F7E6DF;box-sizing: border-box;border-radius: .08rem;overflow: hidden;" 
+                        @click="previwPdf(item1, index, index1)"
+                        >
+                            <div style="width: 1.04rem;margin: 0 auto;">
+                                <div class="t-c">
+                                    <div class="po-r cover"
+                                        style="background: #FEF7F4;padding-top: .11rem;height: .69rem;box-sizing: border-box;overflow: hidden;"
+                                    >
+                                        <van-image :src="item1.cover" show-loading style="width: .71rem;height: auto;display: block;margin: auto;">
+                                            <template v-slot:loading>
+                                                <van-loading type="spinner" size="20"></van-loading>
+                                            </template>
+                                        </van-image>
+                                        <!-- <div class="mask po-a" style="top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.20);" v-if="item1.look"></div> -->
+                                    </div>
+                                </div>
+                                <div style="padding: .08rem .08rem .08rem .1rem;" class="po-r">
+                                    <p class=" text2-three-dots" style="font-weight: 400;line-height: .2rem;font-size: .13rem;height: .41rem;" :style="{ color: item1.look ? '#666666' : '#333' }">{{ item1.name }}</p>
+                                    <div class="c-flex flex-j-b flex-a-c mt-10">
+                                        <span class="f-s-12 d-inline-block " style="transform: scale(.91667);transform-origin: left center;color: #7C7C7C;flex: 1;">
+                                            {{ item1.look ? `已查看` : `${item1.read_num}人阅读` }}
+                                        </span>
+                                        <div v-if="item1.is_vip" 
+                                            style="background-color: #FFF7E0;border-radius: .04rem;border: 1px solid #FFE9A5;padding: 0.5px 0.5px;"
+                                        >
+                                            <img src="https://img.yaotia.com/act/book/20250406/ico-vip.png" alt="" style="width: .11rem;height: .11rem;" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100px;margin: 0 auto;" v-if="pageLoad">
+                <div v-if="!groups.length" style="margin-top: 13vh;">
+                    <img src="https://img.yaotia.com/act/book/20250408/empty.png" alt="" style="width: 1.4rem;height: 1.2rem;margin: 0 auto;" >
+                    <p style="font-size: .14rem;color: #666;margin-top: .1rem;text-align: center;">暂无资料</p>
+                </div>
+                <van-divider :hairline="false" v-if="groups.length"><span style="font-weight: 500;" >到底了</span></van-divider>
+            </div>
+        </div>
+        <van-popup v-model="show" position="bottom" closeable round style="background-color: #Fff;">
+            <div>
+                <p class="f-s-18 f-w-b " style="padding: .25rem .15rem .1rem;">选择资料分类快速定位</p>
+                <div>
+                    <van-picker :show-toolbar="false" :columns="columns" @change="onChange" swipe-duration="300" visible-item-count="4" ref="picker" />
+                </div>
+                <div class="t-c" style="margin-top: .5rem;margin-bottom: .3rem;">
+                    <van-button style="width: 1.5rem;" round color="#000" plain @click="reset">重置</van-button>
+                    <van-button style="width: 1.5rem;" round color="#000" class="ml-20" @click="confirm">确定</van-button>
+                </div>
+            </div>
+        </van-popup>
+        <van-popup v-model="showVipPop" round style="background-color: transparent;">
+            <div style="width: 2.8rem;height: 3.08rem;" class="po-r">
+                <img src="https://img.yaotia.com/act/book/20250408/zl-pop-cc.png" alt="" style="width: 1.05rem;height: auto;top: .11rem;right: .2rem;" class="po-a">
+                <img src="https://img.yaotia.com/act/book/20250408/zl-pop.png" alt="" style="width: 100%;height: auto;bottom: 0;" class="po-a">
+                <p class="po-a f-s-20 f-w-b" style="color: #691D1D;bottom: 1.42rem;left: .25rem;background-color: #fff;padding: .08rem .14rem;border-radius: .08rem;">Hi，岸友</p>
+                <p class="po-a" style="width: max-content;color: #000;font-size: .16rem;bottom: .92rem;left: 50%;transform: translateX(-50%);">该资料为VIP专享资料</p>
+                <div class="po-a" style="bottom: .24rem;text-align: center;width: 100%;">
+                    <van-button color="#FF3333" style="width: 2.3rem;font-weight: bold;font-size: .16rem;" round @click="unlockVip">解锁VIP</van-button>
+                </div>
+            </div>
+        </van-popup>
+    </div>
+    <script src="https://img.yaotia.com/js/jquery.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/vue.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/L_vant_v_2_11/vatn.min.js"></script>
+    <!-- <script src="https://img.yaotia.com/L_JS/vconsole.min.js"></script> -->
+
+    <script>
+        // var vConsole = new VConsole();
+        var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    kw: '',
+                    isTop: false,
+                    groups: [],
+                    lookList: [],
+                    isHidden: false,
+                    hidden: false,
+                    timer: null,
+                    url: '',
+                    pageLoad: false,
+                    token: '',
+                    timer1: null,
+                    headerTop: 0,
+                    show: false,
+                    columns: [],
+                    pickers: {},
+                    isVip: false,
+                    group: '',
+                    cate: '',
+                    showVipPop: false
+                }
+            },
+
+            created() {
+                this.url = getQueryVariable('d') ? 'http://dev.yaotia.cn' : 'https://api.yaotia.cn'
+                this.pickers = {
+                    行测资料: ['公式模板', '词语成语', '实时积累', '思维导图', '题型技巧'],
+                    申论资料: ['作答规范', '写作素材', '题型模板'],
+                    面试资料: ['素材积累', '面试模板'],
+                }
+                this.columns = [{ values: Object.keys(this.pickers) }, { values: this.pickers['行测资料'] }]
+            },
+            mounted() {
+                this.token = (window.get_token && window.get_token()) || (window.buzhi && window.buzhi.get_token()) || (window.iOSUserInfo && window.iOSUserInfo.token) || ''
+                window.loginh5 = this.loginFn
+                document.addEventListener('visibilitychange', this.visibilitychangeFn)
+                this.lookList = localStorage.getItem('looklist') && JSON.parse(localStorage.getItem('looklist')) || []
+                this.init()
+                window.addEventListener('scroll', this.handleScroll)
+            },
+            methods: {
+                unlockVip() {
+                    this.showVipPop = false
+                    if(window.open_page) {
+                        let url =  getQueryVariable('d') ? `http://sadepot-beta.buzhi.com/sacvip` : `http://sadepot.buzhi.com/sacvip`
+                        window.open_page(url)   
+                    } else {
+                        let url = getQueryVariable('d') ? `http://sadepot-beta.buzhi.com/sacvip?fromh5=1` : `http://sadepot.buzhi.com/sacvip?fromh5=1`
+                        window.open(url)
+                    }
+                },
+                reset() {
+                    this.group = ''
+                    this.cate = ''
+                    this.init()
+                    this.show = false
+                },
+                confirm() {
+                    this.group = this.$refs.picker.getValues()[0]
+                    this.cate = this.$refs.picker.getValues()[1]
+                    this.init()
+                    this.show = false
+                },
+                onChange(picker, values) {
+                    picker.setColumnValues(1, this.pickers[values[0]])
+                },
+                bookClick(id) {
+                    $.ajax({
+                        url: this.url + '/bank/activity/pdfbook/click?id=' + id,
+                        dataType: 'json',
+                        success: (res) => {
+  
+                        }
+                    })
+                },
+                input() {
+                    if(this.kw.replace(/\s/g,'') || this.kw.length == 0) {
+                        this.init()
+                    }
+                },
+                finish() {
+                    window.buzhi && window.buzhi.finish()
+                    window.finish && window.finish(1)
+                },
+                previwPdf(item, index, index1) {
+                    if(!this.token) {
+                        this.login()
+                        this.$toast('你还未登录，请先登录')
+                        return
+                    }
+                    if(item.is_vip && !this.isVip) {
+                        this.showVipPop = true
+                        return
+                    }
+                    if(!this.lookList.includes(item.name)) {
+                        this.lookList.push(item.name)
+                        this.groups[index].books[index1].look = 1
+                        localStorage.setItem('looklist', JSON.stringify(this.lookList))
+                        this.$forceUpdate()
+                    }
+                    clearTimeout(this.timer)
+                    this.timer = setTimeout(() => {
+                        clearTimeout(this.timer)
+                        if(!this.hidden) {
+                            this.$dialog.alert({
+                                title: '提示',
+                                message: '若您点击无法查看资料\n请将APP升级到最新版本再试试~',
+                            })
+                        }
+                    }, 1115)
+                    
+                    this.bookClick(item.id)
+                    // 避免直接跳转后埋点接口失效，延迟一会会
+                    clearTimeout(this.timer1)
+                    setTimeout(() => {
+                        clearTimeout(this.timer1)
+                        let url = `sadepot://sac.com/module/pdf/preview?pdfName=${item.name}&fileURL=${item.file}&isHideBottomBar=1`
+                        window.location.href = url
+                    }, 115)
+                },
+                init() {
+                    $.ajax({
+                        url: `${this.url}/bank/activity/pdfbook/query?kw=${this.kw}&group=${this.group ? this.group.substring(0, 2): ''}&cate=${this.cate}`,
+                        dataType: 'json',
+                        success: (res) => {
+                            this.groups = res.data.groups || []
+                            this.$nextTick(() => {
+                                if(!this.groups.length) {
+                                    this.$refs.input && this.$refs.input.blur()
+                                }
+                                this.pageLoad = true
+                            })
+                            if(!this.groups.length) return
+                            this.groups.forEach(item => {
+                                item.books.forEach(item1 => {
+                                    item1.look = 0
+                                    if(this.lookList.length && this.lookList.includes(item1.name)) {
+                                        item1.look = 1
+                                    }
+                                })
+                            })
+                            this.getUserInfo()
+                            this.$nextTick(() => {
+                                this.headerTop = document.getElementById('search-input1').getBoundingClientRect().top + window.scrollY
+                            })
+                        }
+                    })
+                },
+                getUserInfo() {
+                    if(!this.token) {
+                        return
+                    }
+                    $.ajax({
+                        url: this.url + '/bank/user/info',
+                        headers: {
+                            'x-token': this.token
+                        },
+                        dataType: 'json',
+                        success: (res) => {
+                            if(res.data.vip && !res.data.vip.is_expire) {
+                                this.isVip = true
+                            }
+                        }
+                    })
+                },
+                visibilitychangeFn() {
+                    this.isHidden = document.hidden;
+                    if (this.isHidden) {
+                        console.log('隐藏了');
+                        this.hidden = true
+                    } else {
+                        console.log('显示了了');
+                        // this.hidden = false
+                        if(!this.isVip) {
+                            this.getUserInfo()
+                        }
+                    }
+                },
+                handleScroll(){
+                    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+                    scrollTop > (this.headerTop - 70) ? this.isTop = true : this.isTop = false
+                },
+                //登录操作
+                login() {
+                    window.buzhi && window.buzhi.login()
+                    window.login && window.login(1)
+                },
+                loginFn(obj) {
+                    setTimeout(() => {
+                        this.token = obj.token
+                        this.getUserInfo()
+                        this.$toast('登录成功')
+                    }, 20)
+                },
+            }
+        })
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+    </script>
+</body>
+
+</html>

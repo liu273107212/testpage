@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="description" content="2025年国考考情分析" />
+  <title>2025年国考考情分析</title>
+  <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <meta name="referrer" content="no-referrer" />
+  <meta HTTP-EQUIV="Cache-Control" CONTENT="no-store,no-cache, must-revalidate">
+  <meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+  <meta HTTP-EQUIV="expires" CONTENT="0">
+  <script type="text/javascript" src="https://img.yaotia.com/L_JS/1018/L_rem.js"></script>
+  <link rel="stylesheet" href="https://img.yaotia.com/css/L_vant_v_2_11/index.css">
+  <link rel="stylesheet" href="https://img.yaotia.com/L_CSS/21_09_15_01/common.min.css">
+  <link rel="stylesheet" href="https://img.yaotia.com/css/L_0113/animate.min.css">
+  <style>
+    body {
+        background-color: #66BB44;
+    }
+    .page-container {
+        padding-bottom: 1.2rem;
+        max-width: 768px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    .t-r {
+        text-align: right;
+    }
+    .box {
+        position: relative;
+        margin-top: -2.85rem;
+    }
+    .content {
+        position: relative;
+        padding: .55rem .18rem;
+        margin-left: .2rem;
+        margin-right: .2rem;
+        border: .02rem solid #000000;
+        border-radius: .19rem;
+        background-color: #fff;
+    }
+    .van-tabs--line .van-tabs__wrap {
+        height: .46rem;
+    }
+    .van-tab {
+        margin-right: .05rem;
+        width: .84rem;
+        height: .46rem;
+        flex: inherit;
+        font-size: .15rem;
+        font-weight: bold;
+        border: 2px solid #000;
+        border-radius: .06rem;
+        box-sizing: border-box;
+    }
+    .van-tab--active {
+        color: #fff;
+        background-color: #FF551C;
+    }
+    .van-tabs__content {
+        position: relative;
+        margin-top: -.07rem;
+    }
+    .check-ani {
+        transition: all .3s;
+    }
+    .check-ani:active {
+        transform: scale(0.96);
+    }
+    .check {
+        position: relative;
+        width: 1.56rem;
+        height: .7rem;
+        color: #fff;
+        background: url('https://img.yaotia.com/act/sac/kqfx/20241202/check1.png') no-repeat center top / 100% 100%;
+    }
+    .check1 {
+        position: relative;
+        margin-left: -.08rem;
+        width: 1.48rem;
+        height: .7rem;
+        color: #fff;
+        background: url('https://img.yaotia.com/act/sac/kqfx/20241202/check2.png') no-repeat center top / 100% 100%;
+    }
+    .check1-dis {
+        color: #9E9E9E;
+        background: url('https://img.yaotia.com/act/sac/kqfx/20241202/check1-dis.png') no-repeat center top / 100% 100%;
+    }
+    .check2-dis {
+        color: #9E9E9E;
+        background: url('https://img.yaotia.com/act/sac/kqfx/20241202/check2-dis.png') no-repeat center top / 100% 100%;
+    }
+    .header {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+        max-width: 768px;
+        /* height: 88px; */
+        padding-top: 50px;
+        padding-bottom: 10px;
+        background-color: #fff;
+        box-sizing: border-box;
+        z-index: 2000;
+        transition: all .5s;
+    }
+    .back-iocn {
+        position: absolute;
+        top: 50%;
+        left: .2rem;
+        transform: translateY(-50%);
+        width: .26rem;
+    }
+  </style>
+</head>
+
+<body class="root">
+    <div class="page-container" id="app" v-cloak
+        :style="{ 'padding-top': isIosNew ? 0 : '80px' }"
+    >
+        <div class="header animate__animated animate__fadeIn" v-if="!isIosNew">
+            <div class="t-c  po-r">
+                <img src="./img/icon-back.png" alt="" class="back-iocn" @click="finish">
+                <span class="f-s-16 f-w-b">2025年国考考情分析</span>
+            </div>
+        </div>
+        <div>
+            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/top-img.png" alt="">
+        </div>
+        <div class="box content"> 
+            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/title1.png" alt="" 
+                class="po-a"
+                style="left: -.06rem;top: -.23rem;width: 1.66rem;"
+            >
+            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/tip1.png" alt="" 
+                class="po-a"
+                style="right: -.13rem;top: -.25rem;width: .68rem;"
+            >
+            <div>
+                <img src="https://img.yaotia.com/act/sac/kqfx/20241202/title.png" alt="" style="width: 1.81rem;margin-top: .05rem;">
+            </div>
+            <van-tabs v-model="active" :line-height="0" style="margin-top: .18rem;" swipeable>
+                <van-tab v-for="item, index in tab1" :key="index" class="">
+                    <template #title>
+                        <span class="tab-title">{{ item.title }}</span>
+                    </template>
+                    <div style="min-height: 600px;" >
+                        <div v-for="item1, index1 in item.img" :key="index1" >
+                            <img :src="item1" alt="">
+                        </div>
+                    </div>
+                </van-tab>
+            </van-tabs>
+            <div style="margin-top: .35rem;">
+                <div v-for="item in xc">
+                    <img :src="item" alt="">
+                </div>
+            </div>
+            <div style="display: none">
+                <img src="https://img.yaotia.com/act/sac/kqfx/20241202/img-ds.png" alt="">
+                <img src="https://img.yaotia.com/act/sac/kqfx/20241202/img-xzzf.png" alt="">
+            </div>
+        </div>
+        <div class="content" style="margin-top: .55rem;"> 
+            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/title2.png" alt="" 
+                class="po-a"
+                style="left: -.06rem;top: -.23rem;width: 1.89rem;"
+            >
+            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/tip2.png" alt="" 
+                class="po-a"
+                style="right: -.13rem;top: -.17rem;width: .62rem;"
+            >
+            <div style="margin-top: .1rem;">
+                <img src="https://img.yaotia.com/act/sac/kqfx/20241202/qs-sl.png" alt="">
+                <img src="https://img.yaotia.com/act/sac/kqfx/20241202/img-xc-kqyc.png" alt="" style="margin-top: .2rem;">
+            </div>
+        </div>
+        <div class="content" style="margin-top: .55rem;"> 
+            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/cyyx.png" alt="" 
+                class="po-a"
+                style="left: -.06rem;top: -.23rem;width: 1.89rem;"
+            >
+            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/tip3.png" alt="" 
+                class="po-a"
+                style="right: -.13rem;top: -.33rem;width: .62rem;"
+            >
+            <div>
+                <p style="font-size: .17rem; font-weight: bold;color: #3D3D3D;">{{ ques1.content }}</p>
+                <p style="font-size: .13rem;color: #3D3D3D;margin-top: .06rem;">{{ ques1.count }}人参与</p>
+            </div>
+            <div style="margin-top: .2rem;" class="c-flex flex-j-b">
+                <div v-for="item, index in ques1.option">
+                    <div 
+                        v-if="index == 0"
+                        class="check check-ani"
+                        :class="{ 'check1-dis': ques1.option.some(v=>v.is_check) && !item.is_check }"
+                        @click="submit('ques1', item, index)"
+                    >
+                        <div class="c-flex flex-j-b flex-a-c" style="padding: 0 .35rem 0 .09rem;height: 88%;">
+                            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/icon1-1.png" alt="" style="width: .5rem;height: .5rem;flex-shrink: 0;">
+                            <span style="font-size: .18rem;">{{ item.rage }}%</span>
+                        </div>
+                        <div style="position: absolute;bottom: -.27rem;left: 0;">
+                            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/text1-dis.png" alt="" style="width: .36rem;"
+                                v-if="ques1.option.some(v=>v.is_check) && !item.is_check"
+                            >
+                            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/text1.png" alt="" style="width: .36rem;" v-else>
+                        </div>
+                    </div>
+                    <div 
+                        v-if="index == 1"
+                        class="check1 check-ani"
+                        :class="{ 'check2-dis': ques1.option.some(v=>v.is_check) && !item.is_check }"
+                        @click="submit('ques1', item, index)"
+                    >
+                        <div class="c-flex flex-j-b flex-a-c" style="padding: 0 .09rem 0 .35rem ;height: 88%;">
+                            <span style="font-size: .18rem;">{{ item.rage }}%</span>
+                            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/icon1-2.png" alt="" style="width: .5rem;height: .5rem;flex-shrink: 0;">
+                        </div>
+                        <div style="position: absolute;bottom: -.27rem;right: 0;">
+                            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/text2-dis.png" alt="" style="width: .54rem;"
+                                v-if="ques1.option.some(v=>v.is_check) && !item.is_check"
+                            >
+                            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/text2.png" alt="" style="width: .54rem;" v-else>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="content animate__animated animate__fadeIn" style="margin-top: .15rem;padding-top: .18rem;" v-if="ques1.option && ques1.option[0].is_check"> 
+            <div>
+                <p style="font-size: .17rem; font-weight: bold;color: #3D3D3D;">{{ ques2.content }}</p>
+                <p style="font-size: .13rem;color: #3D3D3D;margin-top: .06rem;">{{ ques2.count }}人参与</p>
+            </div>
+            <div style="margin-top: .2rem;" class="c-flex flex-j-b animate__animated animate__fadeIn" >
+                <div v-for="item, index in ques2.option">
+                    <div 
+                        v-if="index == 0"
+                        class="check check-ani"
+                        :class="{ 'check1-dis': ques2.option.some(v=>v.is_check) && !item.is_check }"
+                        @click="submit('ques2', item, index)"
+                    >
+                        <div class="c-flex flex-j-b flex-a-c" style="padding: 0 .35rem 0 .09rem;height: 88%;">
+                            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/icon2-1.png" alt="" style="width: .5rem;height: .5rem;flex-shrink: 0;">
+                            <span style="font-size: .18rem;">{{ item.rage }}%</span>
+                        </div>
+                        <div style="position: absolute;bottom: -.27rem;left: 0;">
+                            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/text-dis.png" alt="" style="width: .9rem;"
+                                v-if="ques2.option.some(v=>v.is_check) && !item.is_check"
+                            >
+                            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/text3.png" alt="" style="width: .9rem;" v-else>
+                        </div>
+                    </div>
+                    <div 
+                        v-if="index == 1"
+                        class="check1 check-ani"
+                        :class="{ 'check2-dis': ques2.option.some(v=>v.is_check) && !item.is_check }"
+                        @click="submit('ques2', item, index)"
+                    >
+                        <div class="c-flex flex-j-b flex-a-c" style="padding: 0 .09rem 0 .35rem ;height: 88%;">
+                            <span style="font-size: .18rem;">{{ item.rage }}%</span>
+                            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/icon2-2.png" alt="" style="width: .5rem;height: .5rem;flex-shrink: 0;">
+                        </div>
+                        <div style="position: absolute;bottom: -.27rem;right: 0;">
+                            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/text4-dis.png" alt="" style="width: .72rem;"
+                                v-if="ques2.option.some(v=>v.is_check) && !item.is_check"
+                            >
+                            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/text4.png" alt="" style="width: .72rem;" v-else>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: .5rem;">
+            <img src="https://img.yaotia.com/act/sac/kqfx/20241202/bottom-logo.png" alt="" style="width: .8rem;margin: 0 auto;">
+        </div>
+    </div>
+    <script src="https://img.yaotia.com/js/jquery.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/vue.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/L_vant_v_2_11/vatn.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/vconsole.min.js"></script>
+
+    <script>
+        // var vConsole = new VConsole()
+        let storage = ''
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    url: '',
+                    token: '',
+                    answer1: '',
+                    answer2: '',
+                    active: 0,
+                    xc: [
+                        'https://img.yaotia.com/act/sac/kqfx/20241202/1@3x.png?size=1023X1395',
+                        'https://img.yaotia.com/act/sac/kqfx/20241202/2@3x.png?size=1023X1395',
+                        'https://img.yaotia.com/act/sac/kqfx/20241202/3@3x.png?size=1023X1395',
+                        'https://img.yaotia.com/act/sac/kqfx/20241202/4@3x.png?size=1023X1395',
+                        'https://img.yaotia.com/act/sac/kqfx/20241202/5@3x.png?size=1023X1395',
+                        'https://img.yaotia.com/act/sac/kqfx/20241202/6@3x.png?size=1023X1395',
+                        'https://img.yaotia.com/act/sac/kqfx/20241202/7@3x.png?size=1023X1395',
+                        'https://img.yaotia.com/act/sac/kqfx/20241202/8@3x.png?size=1023X1395',
+                        'https://img.yaotia.com/act/sac/kqfx/20241202/9@3x.png?size=1023X1413'
+                    ],
+                    tab1: [
+                        { 
+                            title: '副省级',
+                            img: [
+                                'https://img.yaotia.com/act/sac/kqfx/20241202/img-fs.png',
+                                'https://img.yaotia.com/act/sac/kqfx/20241202/img-fs-2.png',
+                            ]
+                        },
+                        { 
+                            title: '地市级',
+                            img: [
+                                'https://img.yaotia.com/act/sac/kqfx/20241202/img-ds.png',
+                                'https://img.yaotia.com/act/sac/kqfx/20241202/tab2-2.png',
+                            ]
+                        },
+                        { 
+                            title: '行政执法',
+                            img: [
+                                'https://img.yaotia.com/act/sac/kqfx/20241202/img-xzzf.png',
+                                'https://img.yaotia.com/act/sac/kqfx/20241202/tab3-2.png'
+                            ]
+                        },
+                    ],
+                    ques1: {},
+                    ques2: {},
+                }   
+            },
+            computed: {
+                isIosNew() {
+                    if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)){
+                        return true
+                    }else {
+                        return false
+                    }
+                }
+            },
+            created() {
+                this.url = getQueryVariable('d') ? 'http://beta-act.sadepot.yaotia.cn' : 'https://sadepot-act.buzhi.com'
+                storage = getQueryVariable('d') ? 'fx-dev' : 'fx-prod'
+            },
+            mounted() {
+                this.token = (window.get_token && window.get_token()) || (window.buzhi && window.buzhi.get_token()) || (window.iOSUserInfo && window.iOSUserInfo.token) || ''
+                this.answer1 = localStorage.getItem(storage + 'answer1') || ''
+                this.answer2 = localStorage.getItem(storage + 'answer2') || ''
+                this.getQuestion()
+            },
+            methods: {
+                finish() {
+                    window.buzhi && window.buzhi.finish()
+                    window.finish && window.finish(1)
+                },
+                submit(type, item, index) {
+                    if(type == 'ques1') {
+                        if(this.ques1.option.some(v=>v.is_check)) return
+                        this.ques1.option[index].is_check = 1
+                        let params = {
+                            qid: this.ques1.id,
+                            option_id: item.id,
+                        }
+                        this.submitFn(type, params)
+                    }
+                    if(type == 'ques2') {
+                        if(this.ques2.option.some(v=>v.is_check)) return
+                        this.ques2.option[index].is_check = 1
+                        let params = {
+                            qid: this.ques2.id,
+                            option_id: item.id,
+                        }
+                        this.submitFn(type, params)
+                    }
+                },
+                submitFn(type, params) {
+                    $.ajax({
+                        url: `${this.url}/act/question/answer`,
+                        type: 'post',
+                        data: params,
+                        dataType: 'json',
+                        success: (res) => {
+                            if(res.code != 0) {
+                                this.$toast(res.msg)
+                                return
+                            }
+                            if(type == 'ques1') {
+                                localStorage.setItem(storage + 'answer1', params.option_id)
+                                this.ques1.count++
+                                this.ques1.option = res.data
+                            }
+                            if(type == 'ques2') {
+                                localStorage.setItem(storage + 'answer2', params.option_id)
+                                this.ques2.count++
+                                this.ques2.option = res.data
+                            }
+                            this.$toast('参与成功')
+                            this.$forceUpdate()
+                            
+                        }
+                    })
+                },
+                getQuestion() {
+                    $.ajax({
+                        url: `${this.url}/act/question/get`,
+                        dataType: 'json',
+                        success: (res) => {
+                            console.log(res);
+                            this.ques1 = res.data.question[0]
+                            this.ques2 = res.data.question[1]
+                            if(this.answer1) {
+                                this.ques1.option.forEach(item => {
+                                    if(this.answer1 == item.id) {
+                                        item.is_check = 1
+                                    }
+                                })
+                            }
+                            if(this.answer2) {
+                                this.ques2.option.forEach(item => {
+                                    if(this.answer2 == item.id) {
+                                        item.is_check = 1
+                                    }
+                                })
+                            }
+                        }
+                    })
+                }
+            }
+        })
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="description" content="上岸仓" />
+  <title>上岸仓</title>
+  <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <meta name="referrer" content="no-referrer" />
+  <meta HTTP-EQUIV="Cache-Control" CONTENT="no-store,no-cache, must-revalidate">
+  <meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+  <meta HTTP-EQUIV="expires" CONTENT="0">
+  <script type="text/javascript" src="https://img.yaotia.com/L_JS/1018/L_rem.js"></script>
+  <link rel="stylesheet" href="https://img.yaotia.com/css/L_vant_v_2_11/index.css">
+  <link rel="stylesheet" href="https://img.yaotia.com/L_CSS/21_09_15_01/common.min.css">
+  <style>
+    body {
+      background-color: #fff;
+    }
+    .page-container {
+      padding-bottom: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .van-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .copyright {
+      padding: 10px 0;
+      color: #fff;
+      font-size: 14px;
+      background-color: #333639;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+    .copyright a {
+      color: #fff;
+      text-decoration: none;
+      transition: all .3s;
+    }
+    .copyright a:hover {
+      color: rgba(255, 255, 255, .8);
+    }
+    .line {
+      color: #aaa9a9;
+    }
+  </style>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?df8113477d3faa84e5145459fa8b1296";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+<body class="root">
+  <div class="page-container" id="app" v-cloak>
+    <div class="container-inner" style="overflow: hidden;position: relative;">
+        <div class="po-r" v-for="item ,index in imgs" :key="index">
+            <van-image class="fill-w" :src="item" show-loading style="min-height: 50px;">
+                <template v-slot:loading>
+                    <van-loading type="spinner" size="20"></van-loading>
+                </template>
+            </van-image>
+        </div>
+        <div class="t-c copyright">
+          <div>
+            <a class="van-button van-button--info van-button--small van-button--round" style="padding: 0px 0.2rem;" href="http://img.yaotia.com/ac/app/app-release-1.0.0.apk" target="_blank">
+              <div class="van-button__content">
+                <span class="van-button__text" >立即下载</span>
+              </div>
+            </a>
+          </div>
+        </div>
+    </div>
+    <script src="https://img.yaotia.com/js/jquery.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/vue.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/L_vant_v_2_11/vatn.min.js"></script>
+
+
+    <script>
+
+      var app = new Vue({
+        el: '#app',
+        data: function () {
+          return {
+            imgs: [
+              'https://img.yaotia.com/act/1v1/20240529/1@2x.png',
+              'https://img.yaotia.com/act/1v1/20240529/2@2x.png',
+              'https://img.yaotia.com/act/1v1/20240529/3@2x.png',
+              'https://img.yaotia.com/act/1v1/20240529/4@2x.png',
+            ]
+          }
+        },
+        mounted: function () {
+
+        },
+        methods: {
+
+        }
+      })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="description" content="获取激活码" />
+  <title>获取激活码</title>
+  <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <meta name="referrer" content="no-referrer" />
+  <meta HTTP-EQUIV="Cache-Control" CONTENT="no-store,no-cache, must-revalidate">
+  <meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+  <meta HTTP-EQUIV="expires" CONTENT="0">
+  <script type="text/javascript" src="https://img.yaotia.com/L_JS/1018/L_rem.js"></script>
+  <link rel="stylesheet" href="https://img.yaotia.com/css/L_vant_v_2_11/index.css">
+  <link rel="stylesheet" href="https://img.yaotia.com/L_CSS/21_09_15_01/common.min.css">
+  <style>
+    body {
+        background-color: #fff;
+    }
+    .page-container {
+        padding-bottom: 0;
+        max-width: 540px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    .d-block {
+        display: block;
+    }
+    .content {
+        margin-top: -.33rem;
+        padding: .35rem .24rem .3rem;
+        background-color: #fff;
+        border-radius: 20px 20px 0 0;
+        box-sizing: border-box;
+    }
+    .code {
+        flex: 1;
+        height: .84rem;
+        line-height: .84rem;
+        color: #000;
+        font-size: .4rem;
+        text-align: center;
+        font-weight: bold;
+        background-color: #F8F9FA;
+        border: 1px solid rgba(215, 216, 217, .3);
+        box-sizing: border-box;
+    }
+    .btn-copy {
+        width: .74rem;
+        height: .84rem;
+        line-height: .84rem;
+        text-align: center;
+        font-size: .2rem;
+        color: #1F1F1F;
+        font-weight: bold;
+        box-sizing: border-box;
+        border: 1px solid #000000;
+    }
+    .btn-copy:active {
+        transform: scale(.99);
+    }
+    .jhlc {
+        padding: .2rem;
+        border: 1px solid rgba(217, 217, 217, .3);
+        border-bottom: none;
+        border-radius: 7px 7px 0 0;
+    }
+    .btn {
+        display: inline-block;
+        width: 3.27rem;
+        height: .48rem;
+        line-height: .48rem;
+        text-align: center;
+        font-size: .16rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #1F1F1F;
+        border-radius: 999px;
+    }
+    .btn:active {
+        opacity: .9;
+    }
+  </style>
+</head>
+
+<body class="root">
+    <div class="page-container" id="app" v-cloak>
+        <div class="po-r" style="margin-top: -.2rem;">
+            <img src="./img/zm-pop.png" alt="" class="d-block">
+            <div class="po-a-m">
+                <img src="https://img.yaotia.com/sac/act/zm/20240626/zm-logo.png" alt="" style="width: .74rem;height: .74rem;" class="m-auto">
+                <img src="https://img.yaotia.com/sac/act/zm/20240626/zm-title.png" alt="" style="width: 1.82rem;" class="mt-20">
+            </div>
+        </div>
+        <div class="po-r content">
+            <p class="f-s-20 f-w-b" style="color: #1F1F1F;">你的激活码</p>
+            <div class="c-flex mt-15">
+                <p class="code">{{ code }}</p>
+                <span class="btn-copy" @click="copyFn">复制</span>
+            </div>
+            <div class="jhlc mt-20">
+                <p class="f-s-16 f-w-b" style="color: #333;">你的激活码</p>
+                <p class="mt-15" style="color: #666;font-size: .13rem;">1、在应用商店下载“上岸仓”App</p>
+                <p class="mt-10" style="color: #666;font-size: .13rem;">2、复制激活码，打开App</p>
+                <p class="mt-10" style="color: #666;font-size: .13rem;">3、粘贴激活码，进入App首页，开始使用</p>
+            </div>
+            <div class="t-c" style="background-color: #FFF2E5;padding: .08rem 0;border-radius: 0 0 7px 7px;">
+                <p style="color: #F06108;" class="f-s-12">上岸仓与你一起努力、一起进步</p>
+                <p style="color: #F06108;" class="f-s-14 f-w-b mt-5">期待你能多多学习、多多反馈噢~~</p>
+            </div>
+        </div>
+        <!-- <div class="t-c mb-40">
+            <span class="btn " @click="download">立即下载app</span>
+        </div> -->
+
+    </div>
+    <script src="https://img.yaotia.com/js/jquery.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/vue.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/L_vant_v_2_11/vatn.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/vconsole.min.js"></script>
+
+    <script>
+        // var vConsole = new VConsole()
+        var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    code: ''
+                }
+            },
+
+            created() {
+                this.code = getQueryVariable('code') || ''
+                
+            },
+            mounted() {
+
+            },
+            methods: {
+                download() {
+                    if(isiOS) {
+                        window.location.href = 'itms-apps://itunes.apple.com/cn/app/id6502400513?mt=8'
+                    }else {
+                        window.location.href = 'http://h5.appstore.vivo.com.cn/?_refluxos=a10#/details?app_id=3701247&app_pos=1&search_word=%E4%B8%8A%E5%B2%B8%E4%BB%93&appId=3701247&frompage=associateApp&listpos=1'
+                    }
+                },
+                copyFn() {
+                    this.copy(this.code, () => {
+                        this.$toast('复制成功')
+                    })
+                },
+                copy(copyText, callback) {
+                    var copyText = copyText || '复制了？'
+                    let copyDom = document.createElement('span');
+                    copyDom.style.position = 'absolute'
+                    copyDom.style.left = '-9999px'
+                    copyDom.style.opacity = '0'
+                    copyDom.innerText = copyText
+                    document.body.appendChild(copyDom)
+                    const range = document.createRange();
+                    range.selectNode(copyDom);
+                    const selection = window.getSelection();
+                    if(selection.rangeCount > 0) selection.removeAllRanges();
+                    selection.addRange(range);
+                    document.execCommand('Copy');
+                    console.log(copyText, '--复制成功')
+                    document.body.removeChild(copyDom)
+                    if(callback) {
+                        callback()
+                    }
+                },
+            }
+        })
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="description" content="获取“上岸仓”激活码" />
+  <title>获取“上岸仓”激活码</title>
+  <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <meta name="referrer" content="no-referrer" />
+  <meta HTTP-EQUIV="Cache-Control" CONTENT="no-store,no-cache, must-revalidate">
+  <meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+  <meta HTTP-EQUIV="expires" CONTENT="0">
+  <script type="text/javascript" src="https://img.yaotia.com/L_JS/1018/L_rem.js"></script>
+  <link rel="stylesheet" href="https://img.yaotia.com/css/L_vant_v_2_11/index.css">
+  <link rel="stylesheet" href="https://img.yaotia.com/L_CSS/21_09_15_01/common.min.css">
+  <style>
+    body {
+        background-color: #fff;
+    }
+    .page-container {
+        padding-bottom: 0;
+        max-width: 540px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    .t-r {
+        text-align: right;
+    }
+    .form {
+        padding: 0 .23rem;
+    }
+    .form-item {
+        padding: .18rem 0;
+        border-bottom: 1px solid rgba(228, 232, 235, .3);
+    }
+    .form-item .title {
+        font-size: .14rem;
+        font-weight: bold;
+        color: #282828;
+    }
+    .flex1 {
+        flex: 1;
+    }
+    .my-input {
+        padding: 0;
+    }
+    .my-input input {
+        font-size: .13rem;
+        text-align: right;
+    }
+    .my-input .van-icon {
+        font-size: .14rem;
+        color: #D3D3D3;
+    }
+    .text-area {
+        padding: .12rem;
+        background-color: #F7F7F7;
+        border: 1px solid rgba(235, 235, 235, .3);
+        border-radius: 7px;
+    }
+    .text-area .van-cell {
+        padding: 0;
+        font-size: .12rem;
+        background-color: transparent;
+    }
+    .btn {
+        display: inline-block;
+        width: 2.6rem;
+        height: .52rem;
+        line-height: .52rem;
+        text-align: center;
+        font-size: .18rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #1F1F1F;
+        border-radius: 999px;
+    }
+    .btn:active {
+        opacity: .9;
+    }
+    .disabled {
+        opacity: .5;
+    }
+    .disabled:active {
+        opacity: .5;
+    }
+    .target {
+        padding: .05rem .11rem;
+        margin-left: .13rem;
+        font-size: .13rem;
+        color: #888;
+        border: 1px solid rgba(226, 226, 226, .3);
+        border-radius: 999px;
+        transition: all .3s;
+    }
+    .target-active {
+        color: #000;
+        border-color: rgba(0, 0, 0, .5);
+    }
+    .pop-arrow {
+        display: block;
+        margin: 0 auto;
+        padding: .15rem;
+        width: .24rem;
+    }
+    .pop-title {
+        padding: .08rem 0 0.11rem;
+        margin: 0 .16rem;
+        color: #282828;
+        border-bottom: 1px solid rgba(223, 227, 229, .3);
+    }
+    .van-picker-column__item {
+        font-size: .16rem;
+        transition: all .3s;
+    }
+    .van-picker-column__item--selected {
+        font-size: .18rem;
+        font-weight: bold;
+        color: #333333;
+        background-color: #F2F2F3;
+        border-radius: 6px;
+    }
+    .list .item {
+        padding: .16rem .14rem;
+        border: 1px solid rgba(217, 217, 217, .3);
+        border-radius: 6px;
+        transition: all .3s;
+        box-sizing: border-box;
+    }
+    /* .list-base {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .list-base .item {
+        width: 48%;
+    } */
+    .item:active {
+        transform: scale(.99);
+    }
+    .item .name {
+        font-size: .16rem;
+        color: #666666;
+    }
+    /* .list-base .item .name {
+        font-size: .14rem;
+    } */
+    .item-active .name {
+        color: #333;
+    }
+    .list-check {
+        position: relative;
+        width: .16rem;
+        height: .16rem;
+        border: 1px solid rgba(153, 153, 153, .3);
+        border-radius: 50%;
+        box-sizing: border-box;
+    }
+    .item-active .list-check::before {
+        content: '';
+        position: absolute;
+        width: .1rem;
+        height: .1rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #000;
+        border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body class="root">
+    <div class="page-container pt-10" id="app" v-cloak>
+        <div class="form" v-if="pageLoad">
+            <div class="form-item c-flex flex-j-b flex-a-c">
+                <span class="title"><span style="color: #FF3333;">*</span>手机号</span>
+                <div class="flex1">
+                    <van-field v-model="mobile" placeholder="输入手机号码" class="my-input" type="number" maxlength="11" oninput="value=value.replace(/[^\d]/g,'')" />
+                </div>
+            </div>
+            <div class="form-item c-flex flex-j-b flex-a-c">
+                <span class="title"><span style="color: #FF3333;">*</span>备考状态</span>
+                <div class="flex1">
+                    <van-field placeholder="选择你的备考状态" class="my-input" 
+                        right-icon="arrow"
+                        name="picker"
+                        :value="exam_status"
+                        readonly
+                        @click="showPicker = true"
+                    />
+                </div>
+            </div>
+            <div class="form-item c-flex flex-j-b flex-a-c">
+                <span class="title"><span style="color: #FF3333;">*</span>备考目标</span>
+                <div class="flex1 t-r">
+                    <span v-for="item in targetList" :key="item.value" class="target" :class="{ 'target-active': exam_target == item.name }" 
+                    @click="targetCheck(item)">{{ item.name }}</span>
+                </div>
+            </div>
+            <div class="form-item c-flex flex-j-b flex-a-c">
+                <span class="title"><span style="color: #FF3333;">*</span>备考经验</span>
+                <div class="flex1">
+                    <van-field placeholder="选择你的备考经验" class="my-input" 
+                        right-icon="arrow"
+                        name="picker"
+                        :value="exam_num_name"
+                        readonly
+                        @click="showFn('exam_num')"
+                    />
+                </div>
+            </div>
+            <div class="form-item c-flex flex-j-b flex-a-c">
+                <span class="title"><span style="color: #FF3333;">*</span>学习基础</span>
+                <div class="flex1">
+                    <van-field placeholder="选择你的学习基础" class="my-input" 
+                        right-icon="arrow"
+                        name="picker"
+                        :value="base"
+                        readonly
+                        @click="showFn('base')"
+                    />
+                </div>
+            </div>
+            <div class="text-area mt-20">
+                <p class="f-s-14 f-w-b mb-5" style="color: #282828;">当前最想解决的问题</p>
+                <van-field
+                    v-model="desc"
+                    rows="4"
+                    autosize
+                    type="textarea"
+                    placeholder="请描述当前最想解决的问题"
+                />
+            </div>
+            <div class="t-c mt-40">
+                <span class="btn " :class="{ 'disabled': disabled }" @click="handleClick">获取激活码</span>
+            </div>
+        </div>
+        <!-- 备考状态 -->
+        <van-popup v-model="showPicker" position="bottom" :close-on-click-overlay="false" round>
+            <img class="pop-arrow" src="https://img.yaotia.com/act/m-icon/pop-close-arrow.png" alt="" @click="showPicker=false" />
+            <p class="f-s-18 f-w-b pop-title">备考状态</p>
+            <div style="margin: 0 .16rem;">
+                <van-picker
+                    ref="picker"
+                    value-key="name"
+                    :default-index="pickerIndex"
+                    :show-toolbar="false"
+                    :columns="statusList"
+                ></van-picker>
+            </div>
+            <div class="t-c mt-30 mb-50">
+                <span class="btn " @click="handleSure">确定</span>
+            </div>
+        </van-popup>
+        <van-popup v-model="show" position="bottom" @closed="closed" :close-on-click-overlay="false" round>
+            <img class="pop-arrow" src="https://img.yaotia.com/act/m-icon/pop-close-arrow.png" alt="" @click="show=false" />
+            <p class="f-s-18 f-w-b pop-title">{{ type == 'exam_num' ? '备考经验' : '学习基础'  }}</p>
+            <div class="list" style="margin: 0 .16rem;" :class="{ 'list-base': type == 'base' }">
+                <div v-for="item, index in list" :key="index" class="item c-flex flex-j-b flex-a-c mt-15"
+                    :class="{ 'item-active': item.checked }"
+                    @click="itemCheck(index)"
+                >
+                    <span class="name">{{ item.name }}</span>
+                    <span class="list-check"></span>
+                </div>
+            </div>
+            <div class="t-c mt-30 mb-50">
+                <span class="btn " @click="handleSure1">确定</span>
+            </div>
+        </van-popup>
+
+    </div>
+    <script src="https://img.yaotia.com/js/jquery.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/vue.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/L_vant_v_2_11/vatn.min.js"></script>
+    <script src="https://img.yaotia.com/L_JS/vconsole.min.js"></script>
+
+    <script>
+        // var vConsole = new VConsole()
+        let bzdev = 0
+        let storage = bzdev ? 'zm-dev' : 'zm-prod'
+        let url = bzdev ? 'http://beta-act.sadepot.yaotia.cn' : 'https://sadepot-act.buzhi.com'
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    mobile: '',
+                    exam_status: '',
+                    exam_target: '',
+                    exam_num_name: '',
+                    exam_num: '',
+                    base: '',
+                    desc: '',
+                    show: false,
+                    showPicker: false,
+                    columns: [],
+                    statusList: [
+                        { value: 1, name: '在职备考' },
+                        { value: 2, name: '全职备考' },
+                        { value: 3, name: '应届生' },
+                        { value: 4, name: '在校备考' },
+                        { value: 5, name: '其他' },
+                    ],
+                    numList: [
+                        { value: 0, name: '没参加过考试', checked: false },
+                        { value: 1, name: '考过一次', checked: false },
+                        { value: 2, name: '考过2次及以上', checked: false },
+                    ],
+                    baseList: [
+                        { value: 1, name: '行测申论都还可以', checked: false },
+                        { value: 2, name: '行测还可以，申论不太好', checked: false },
+                        { value: 3, name: '申论还可以，行测不太好', checked: false },
+                        { value: 4, name: '行测申论都不太好', checked: false },
+                        { value: 5, name: '不确定好不好', checked: false },
+                    ],
+                    targetList: [
+                        { value: 1, name: '国考' },
+                        { value: 2, name: '省考' },
+                        { value: 3, name: '事业单位' },
+                    ], 
+                    type: '',
+                    pickerIndex: 2,
+                    list: [],
+                    listIndex: 0,
+                    code: '',
+                    pageLoad: false
+                }
+            },
+            computed: {
+                disabled() {
+                    return !!(!this.mobile || !this.exam_status || this.exam_num === '' || !this.base)
+                }
+            },
+            created() {
+                this.code = localStorage.getItem(`${storage}-code`) || ''
+                if(this.code) {
+                    window.location.replace('./zmapply.html?code=' + this.code)
+                }else {
+                    this.pageLoad = true
+                }
+            },
+            mounted() {
+
+            },
+            methods: {
+                handleSure() {
+                    this.pickerIndex = this.$refs.picker.getIndexes()[0]
+                    this.exam_status = this.$refs.picker.getValues()[0].name
+                    this.showPicker = false
+                },
+                targetCheck(item) {
+                    this.exam_target = item.name
+                },
+                handleClick() {
+                    if(this.disabled) {
+                        this.$toast('还有信息未填写！')
+                        return
+                    }
+                    let reg = /^1[3|4|5|6|7|8|9]\d{9}$/;
+                    if (!this.mobile || !reg.test(this.mobile)) {
+                        this.$toast("请输入正确的电话号码");
+                        return;
+                    }
+                    let params = {
+                        mobile: this.mobile,
+                        exam_status: this.exam_status,
+                        exam_target: this.exam_target,
+                        exam_num: this.exam_num,
+                        base: this.base,
+                        desc: this.desc
+                    }
+                    this.$toast.loading({
+                        message: '提交中...',
+                        forbidClick: true,
+                        loadingType: 'spinner',
+                    })
+                    $.ajax({
+                        url: `${url}/act/recruit/apply`,
+                        type: 'post',
+                        data: params,
+                        dataType: 'json',
+                        success: (res) => {
+                            this.$toast.clear()
+                            if(res.code == 0) {
+                                localStorage.setItem(`${storage}-code`, res.data.code)
+                                window.location.replace('./zmapply.html?code=' + res.data.code)
+                            }else {
+                                this.$toast(res.msg)
+                            }
+                        },
+                        error: (res) => {
+                            this.$toast.clear()
+                            alert(JSON.stringify(res))
+                        }
+                    })
+                    
+                },
+                handleSure1() {
+                    if(!this.list.some(v => v.checked)) {
+                        this.$toast('请选择~')
+                        return
+                    }
+                    if(this.type == 'exam_num') {
+                        this.numList.forEach(item => {
+                            item.checked = false
+                        })
+                        this.numList[this.listIndex].checked = true
+                        this.exam_num = this.numList[this.listIndex].value
+                        this.exam_num_name = this.numList[this.listIndex].name
+                    }
+                    if(this.type == 'base') {
+                        this.baseList.forEach(item => {
+                            item.checked = false
+                        })
+                        this.baseList[this.listIndex].checked = true
+                        this.base = this.baseList[this.listIndex].name
+                    }
+                    this.show = false
+                },
+                itemCheck(index) {
+                    this.listIndex = index
+                    this.list.forEach(item => {
+                        item.checked = false
+                    })
+                    this.list[index].checked = true
+                },
+                showFn(type) {
+                    this.type = type
+                    if(this.type == 'exam_num') {
+                        this.list = JSON.parse(JSON.stringify(this.numList))
+                    }
+                    if(this.type == 'base') {
+                        this.list = JSON.parse(JSON.stringify(this.baseList))
+                    }
+                    this.show = true
+                },
+                closed() {
+                    this.type = ''
+                },
+            }
+        })
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+    </script>
+</body>
+
+</html>
